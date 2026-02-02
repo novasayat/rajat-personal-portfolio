@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaLinkedin } from 'react-icons/fa';
-import SocialLinks from '../common/SocialLinks';
+import { FaEnvelope } from 'react-icons/fa';
 
 const ContactContainer = styled.section`
   min-height: 100vh;
@@ -27,8 +26,17 @@ const ContactSubtitle = styled(motion.p)`
   max-width: 600px;
 `;
 
-const ContactLinks = styled.div`
+const ContactEmail = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   margin-bottom: 2.5rem;
+  color: var(--secondary-color);
+`;
+
+const EmailLink = styled.a`
+  color: var(--secondary-color);
+  text-decoration: underline;
 `;
 
 const Form = styled(motion.form)`
@@ -154,26 +162,12 @@ const Contact = () => {
       >
         Interested in working together? Fill out the form below, or reach me directly.
       </ContactSubtitle>
-      <ContactLinks>
-        <SocialLinks
-          items={[
-            {
-              label: 'Email',
-              href: 'mailto:rajatrautan77@gmail.com',
-              icon: <FaEnvelope />,
-              ariaLabel: 'Email Rajat Rautan'
-            },
-            {
-              label: 'LinkedIn',
-              href: 'https://www.linkedin.com/in/rajatrautan/',
-              icon: <FaLinkedin />,
-              external: true,
-              ariaLabel: 'Rajat Rautan on LinkedIn'
-            }
-          ]}
-          showLabels
-        />
-      </ContactLinks>
+      <ContactEmail>
+        <FaEnvelope aria-hidden="true" />
+        <EmailLink href="mailto:rajatrautan77@gmail.com" aria-label="Email Rajat Rautan">
+          rajatrautan77@gmail.com
+        </EmailLink>
+      </ContactEmail>
       <Form
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
