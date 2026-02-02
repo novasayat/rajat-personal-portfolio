@@ -1,6 +1,8 @@
 // src/components/Footer/Footer.js
 import React from 'react';
 import styled from 'styled-components';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import SocialLinks from '../common/SocialLinks';
 
 const FooterContainer = styled.footer`
   padding: 2rem 10%;
@@ -9,20 +11,10 @@ const FooterContainer = styled.footer`
   text-align: center;
 `;
 
-const SocialLinks = styled.div`
+const FooterLinks = styled.div`
   display: flex;
   justify-content: center;
-  gap: 2rem;
   margin-bottom: 1.5rem;
-  
-  a {
-    color: var(--secondary-color);
-    transition: color 0.3s ease;
-    
-    &:hover {
-      color: var(--accent-color);
-    }
-  }
 `;
 
 const Copyright = styled.p`
@@ -35,10 +27,27 @@ const Footer = () => {
   
   return (
     <FooterContainer>
-      <SocialLinks>
-        <a href="https://github.com/novasayat" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/rajatrautan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </SocialLinks>
+      <FooterLinks>
+        <SocialLinks
+          items={[
+            {
+              label: 'GitHub',
+              href: 'https://github.com/novasayat',
+              icon: <FaGithub />,
+              external: true,
+              ariaLabel: 'Rajat Rautan on GitHub'
+            },
+            {
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/in/rajatrautan/',
+              icon: <FaLinkedin />,
+              external: true,
+              ariaLabel: 'Rajat Rautan on LinkedIn'
+            }
+          ]}
+          showLabels={false}
+        />
+      </FooterLinks>
       <Copyright>
         (c) {currentYear} Rajat Rautan. All rights reserved.
       </Copyright>
