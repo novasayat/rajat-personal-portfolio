@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import profileImage from '../../assets/profile.png';
 
 const AboutContainer = styled.section`
   min-height: 100vh;
@@ -65,7 +66,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span>Profile image coming soon</span>
+          <img src={profileImage} alt="Rajat Rautan" />
         </AboutImage>
         <AboutText>
           <motion.h2
@@ -82,7 +83,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            I'm a passionate designer and developer with a focus on creating intuitive, functional, and beautiful digital experiences. With expertise in UI/UX design and front-end development, I bridge the gap between design and implementation.
+            I am a data and BI analyst with 4+ years of experience building end-to-end analytics solutions, from stakeholder discovery and data modeling to dashboard delivery and data quality automation.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -90,7 +91,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            My approach combines clean aesthetics with user-centered design principles to create websites and applications that not only look fantastic but also function seamlessly.
+            I focus on translating complex business needs into scalable, self-service reporting and actionable insights using tools like Power BI, Tableau, Qlik Sense, SQL, and Python.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -98,7 +99,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            
+            Skills: SQL, Python, R, Power BI, Tableau, Qlik Sense, dbt, PySpark, MS Fabric, Snowflake, BigQuery, and Azure/AWS fundamentals.
           </motion.p>
         </AboutText>
       </AboutContent>

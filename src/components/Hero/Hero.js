@@ -45,7 +45,7 @@ const Hero = () => {
     },
   };
   
-  const title = "Designer & Developer";
+  const title = "Data Analyst & BI Analyst";
   
   return (
     <HeroContainer id="home">
@@ -68,7 +68,7 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
-        Building beautiful, functional websites and digital experiences that connect with users.
+        Impact-focused data and BI analyst with 4+ years of experience delivering revenue growth and operational efficiency through scalable analytics, dashboards, and data quality pipelines.
       </Subtitle>
     </HeroContainer>
   );

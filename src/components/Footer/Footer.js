@@ -36,11 +36,11 @@ const Footer = () => {
   return (
     <FooterContainer>
       <SocialLinks>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/novasayat" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/rajatrautan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </SocialLinks>
       <Copyright>
-        (c) {currentYear} Your Name. All rights reserved.
+        (c) {currentYear} Rajat Rautan. All rights reserved.
       </Copyright>
     </FooterContainer>
   );

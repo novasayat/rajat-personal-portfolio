@@ -159,9 +159,13 @@ const Contact = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        Interested in working together? Fill out the form below, and I'll get back to you as soon as possible.
+        Interested in working together? Fill out the form below, or reach me directly.
       </ContactSubtitle>
-            <Form
+      <ContactInfo>
+        <div>Email: <a href="mailto:rajatrautan77@gmail.com">rajatrautan77@gmail.com</a></div>
+        <div>LinkedIn: <a href="https://www.linkedin.com/in/rajatrautan/" target="_blank" rel="noopener noreferrer">linkedin.com/in/rajatrautan</a></div>
+      </ContactInfo>
+      <Form
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

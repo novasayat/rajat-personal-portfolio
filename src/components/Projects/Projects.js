@@ -92,17 +92,17 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-commerce Platform',
-      description: 'A fully responsive e-commerce platform with product filtering and search capabilities.',
-      image: '/path-to-image.jpg',
-      link: '#'
+      title: 'Real-Time Financial Fraud Detection',
+      description: 'Built a PySpark streaming system to analyze 6.3M transactions and detect fraud with a Decision Tree model.',
+      image: null,
+      link: null
     },
     {
       id: 2,
-      title: 'Portfolio Website',
-      description: 'A modern portfolio website for a photographer showcasing their work.',
-      image: '/path-to-image.jpg',
-      link: '#'
+      title: 'Crime Analysis & Prediction (Washington, DC)',
+      description: 'Combined public datasets to model crime patterns and predict offense rates using regression and random forest.',
+      image: null,
+      link: null
     }
   ];
   
@@ -138,7 +138,7 @@ const Projects = () => {
                   View Project
                 </a>
               ) : (
-                <span>View Project</span>
+                <span>Details available on request</span>
               )}
             </ProjectInfo>
           </ProjectCard>
