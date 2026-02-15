@@ -28,9 +28,17 @@ const ProjectCard = styled(motion.div)`
   aspect-ratio: 16/9;
   overflow: hidden;
   border-radius: 4px;
-  
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
   &:hover .project-info {
-    opacity: 1;
+    background: #f3f3f3;
+    color: #111;
+  }
+
+  &:hover .project-info p,
+  &:hover .project-info span {
+    color: #2f2f2f;
   }
 `;
 
@@ -57,13 +65,13 @@ const ProjectInfo = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.82);
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  opacity: 1;
+  transition: background 0.25s ease, color 0.25s ease;
   color: var(--secondary-color);
   
   h3 {
@@ -78,8 +86,8 @@ const ProjectInfo = styled.div`
   }
   
   a {
-    color: var(--secondary-color);
-    text-decoration: underline;
+    color: inherit;
+    text-decoration: none;
   }
 
   span {
@@ -88,14 +96,35 @@ const ProjectInfo = styled.div`
   }
 `;
 
+const ProjectLinkButton = styled.a`
+  width: fit-content;
+  padding: 0.55rem 1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+`;
+
 const Projects = () => {
   const projects = [
     {
       id: 1,
       title: 'Real-Time Financial Fraud Detection',
-      description: 'Built a PySpark streaming system to analyze 6.3M transactions and detect fraud with a Decision Tree model.',
+      description: 'Built a real-time fraud analytics pipeline in PySpark to process 6.3M transactions, surface risk patterns, and deliver near real-time monitoring through structured streaming, feature engineering, and multi-model ML evaluation.',
       image: null,
-      link: null
+      link: 'https://github.com/novasayat/real-time-fraud-pyspark'
     },
     {
       id: 2,
@@ -134,9 +163,13 @@ const Projects = () => {
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               {project.link ? (
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <ProjectLinkButton
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   View Project
-                </a>
+                </ProjectLinkButton>
               ) : (
                 <span>Details available on request</span>
               )}
