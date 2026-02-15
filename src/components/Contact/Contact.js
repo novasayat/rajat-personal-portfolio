@@ -111,15 +111,29 @@ const SubmitButton = styled(motion.button)`
   &:hover {
     background-color: var(--accent-color);
   }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+`;
+
+const StatusMessage = styled.p`
+  grid-column: 1 / -1;
+  font-size: 0.95rem;
+  color: var(--accent-color);
 `;
 
 const Contact = () => {
+  const CONTACT_ENDPOINT = process.env.REACT_APP_CONTACT_ENDPOINT;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState('');
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -129,19 +143,56 @@ const Contact = () => {
     }));
   };
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Integrate with a form service like Formspree
-    console.log(formData);
-    // Reset form
+  const openMailClient = () => {
+    const mailtoUrl =
+      `mailto:rajatrautan77@gmail.com` +
+      `?subject=${encodeURIComponent(formData.subject)}` +
+      `&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+      )}`;
+    window.location.href = mailtoUrl;
+  };
+
+  const resetForm = () => {
     setFormData({
       name: '',
       email: '',
       subject: '',
       message: ''
     });
-    // Show success message
-    alert('Thank you! Your message has been sent.');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('');
+    setIsSubmitting(true);
+
+    try {
+      if (CONTACT_ENDPOINT) {
+        const response = await fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+          throw new Error('Submit failed');
+        }
+
+        resetForm();
+        setStatus('Message sent successfully.');
+      } else {
+        openMailClient();
+        setStatus('Your email client has been opened to send the message.');
+      }
+    } catch (error) {
+      setStatus('Unable to send right now. Please email me directly at rajatrautan77@gmail.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
@@ -220,11 +271,13 @@ const Contact = () => {
         </InputGroup>
         <SubmitButton
           type="submit"
+          disabled={isSubmitting}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Send Message
+          {isSubmitting ? 'Sending...' : 'Send Message'}
         </SubmitButton>
+        {status ? <StatusMessage aria-live="polite">{status}</StatusMessage> : null}
       </Form>
     </ContactContainer>
   );
