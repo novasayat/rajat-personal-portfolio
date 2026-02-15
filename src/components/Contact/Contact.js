@@ -124,8 +124,10 @@ const StatusMessage = styled.p`
   color: var(--accent-color);
 `;
 
+const DEFAULT_CONTACT_ENDPOINT = 'https://formspree.io/f/mzdarwyq';
+
 const Contact = () => {
-  const CONTACT_ENDPOINT = process.env.REACT_APP_CONTACT_ENDPOINT;
+  const CONTACT_ENDPOINT = process.env.REACT_APP_CONTACT_ENDPOINT || DEFAULT_CONTACT_ENDPOINT;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -183,7 +185,7 @@ const Contact = () => {
         }
 
         resetForm();
-        setStatus('Message sent successfully.');
+        setStatus('Message sent. I will get back to you soon.');
       } else {
         openMailClient();
         setStatus('Your email client has been opened to send the message.');
